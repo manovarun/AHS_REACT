@@ -82,63 +82,44 @@ export const homeContent = {
     cta: { label: 'Learn More About Us', href: '#!' },
   },
   academics: {
+    pillLabel: 'Academics',
     heading: 'Our Educational Programs',
-    subheading: 'Academics',
     description:
-      'Comprehensive programs designed to nurture Tamil language skills and\n            cultural knowledge while providing world-class education.',
+      'Comprehensive programs designed to nurture Tamil language skills and cultural knowledge while providing world-class education.',
     services: [
       {
         number: '01',
+        iconSrc: 'assets/img/pre-primary.png',
+        iconAlt: 'Pre Primary',
         title: 'Pre-Primary',
         age: 'Ages 3-5',
-        desc: 'Foundation in Tamil language through play-based learning,\n                storytelling, and cultural activities.',
-        cta: {
-          label: 'View Curriculum',
-          href: '#!',
-        },
+        desc: 'Foundation in Tamil language through play-based learning, storytelling, and cultural activities.',
+        cta: { label: 'View Curriculum', href: '#!' },
       },
       {
         number: '02',
+        iconSrc: 'assets/img/primary.png',
+        iconAlt: 'Pre Primary',
         title: 'Pre-Primary',
         age: 'Ages 6-10',
-        desc: 'Comprehensive Tamil and English curriculum with focus on arts,\n                mathematics, and science.',
-        cta: {
-          label: 'View Curriculum',
-          href: '#!',
-        },
+        desc: 'Comprehensive Tamil and English curriculum with focus on arts, mathematics, and science.',
+        cta: { label: 'View Curriculum', href: '#!' },
       },
       {
         number: '03',
+        iconSrc: 'assets/img/high-school.png',
+        iconAlt: 'High School',
         title: 'High School',
         age: 'Ages 11-18',
-        desc: 'Advanced studies in Tamil literature, sciences, and preparation\n                for higher education.',
-        cta: {
-          label: 'View Curriculum',
-          href: '#!',
-        },
+        desc: 'Advanced studies in Tamil literature, sciences, and preparation for higher education.',
+        cta: { label: 'View Curriculum', href: '#!' },
       },
     ],
     achievements: [
-      {
-        value: '500+',
-        label: 'Students',
-        labelTamil: 'மாணவர்கள்',
-      },
-      {
-        value: '50+',
-        label: 'Teachers',
-        labelTamil: 'ஆசிரியர்கள்',
-      },
-      {
-        value: '25+',
-        label: 'Years',
-        labelTamil: 'ஆண்டுகள்',
-      },
-      {
-        value: '98+',
-        label: 'Success Rate',
-        labelTamil: 'வெற்றி விகிதம்',
-      },
+      { value: '500+', label: 'Students', labelTamil: 'மாணவர்கள்' },
+      { value: '50+', label: 'Teachers', labelTamil: 'ஆசிரியர்கள்' },
+      { value: '25+', label: 'Years', labelTamil: 'ஆண்டுகள்' },
+      { value: '98+', label: 'Success Rate', labelTamil: 'வெற்றி விகிதம்' },
     ],
   },
   activities: {
