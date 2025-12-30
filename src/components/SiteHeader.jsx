@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { homeContent } from '../content/homeContent.js';
 
 function useBodyScrolledClass() {
@@ -7,6 +7,7 @@ function useBodyScrolledClass() {
     const onScroll = () => {
       document.body.classList.toggle('scrolled', window.scrollY > 100);
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -20,7 +21,6 @@ function useScrollSpy(sectionIds) {
     const els = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean);
-
     if (!els.length) return;
 
     const observer = new IntersectionObserver(
@@ -67,80 +67,108 @@ export default function SiteHeader() {
   );
 
   const activeId = useScrollSpy(sectionIds);
-  const [expanded, setExpanded] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Matches your static template behavior (main.js)
+  useEffect(() => {
+    document.body.classList.toggle('mobile-nav-active', mobileOpen);
+    return () => document.body.classList.remove('mobile-nav-active');
+  }, [mobileOpen]);
+
+  const closeMobile = () => setMobileOpen(false);
 
   const onNavClick = (href) => (e) => {
-    if (!href?.startsWith('#')) return;
+    if (!href?.startsWith('#')) {
+      closeMobile();
+      return;
+    }
 
     e.preventDefault();
-    const id = href.slice(1);
-    smoothScrollToId(id);
-    setExpanded(false);
-
+    smoothScrollToId(href.slice(1));
+    closeMobile();
     window.history.replaceState(null, '', href);
   };
 
+  const tamilHref = homeContent?.language?.tamilHref || '#!';
+
   return (
-    <Navbar
-      id="header"
-      expand="xl"
-      fixed="top"
-      expanded={expanded}
-      onToggle={(next) => setExpanded(next)}
-      className="header d-flex align-items-center"
-    >
+    <header id="header" className="header d-flex align-items-center fixed-top">
       <Container
         fluid
-        className="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+        className="container-fluid container-xl position-relative d-flex align-items-center bg-light rounded-2"
       >
-        <Navbar.Brand
-          href="#home"
+        <a
+          href="index.html"
+          className="logo d-flex align-items-center me-auto"
           onClick={onNavClick('#home')}
-          className="logo d-flex align-items-center"
         >
-          <span className="me-2">
-            <img
-              src={`/${homeContent.brand.logoSrc}`}
-              alt="AHS"
-              className="img-fluid"
-            />
-          </span>
-          <h1 className="sitename m-0">{homeContent.brand.abbr}</h1>
-        </Navbar.Brand>
+          <h4 className="sitename m-0">
+            <span className="p-2 bg-primary rounded-circle">
+              <img
+                className="m-0 img-fluid"
+                src={`/${homeContent.brand.logoSrc}`}
+                alt="AHS"
+              />
+            </span>
+            <span className="text-primary fw-bold">
+              {' '}
+              {homeContent.brand.abbr}
+            </span>
+          </h4>
+        </a>
 
-        <Navbar.Toggle aria-controls="navmenu" className="border-0">
-          <i className="bi bi-list" />
-        </Navbar.Toggle>
-
-        <Navbar.Collapse id="navmenu" className="justify-content-center">
-          <Nav as="ul" className="navmenu">
+        <nav id="navmenu" className="navmenu" aria-label="Primary">
+          <ul>
             {links.map((l) => {
               const isActive =
                 l.href.startsWith('#') && l.href.slice(1) === activeId;
               return (
-                <Nav.Item as="li" key={l.label}>
-                  <Nav.Link
+                <li key={l.label}>
+                  <a
                     href={l.href}
-                    onClick={onNavClick(l.href)}
                     className={isActive ? 'active' : undefined}
+                    onClick={onNavClick(l.href)}
                   >
                     {l.label}
-                  </Nav.Link>
-                </Nav.Item>
+                  </a>
+                </li>
               );
             })}
-          </Nav>
-        </Navbar.Collapse>
+          </ul>
+
+          <i
+            className={`mobile-nav-toggle d-xl-none bi ${
+              mobileOpen ? 'bi-x' : 'bi-list'
+            }`}
+            role="button"
+            tabIndex={0}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMobileOpen((v) => !v)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setMobileOpen((v) => !v);
+            }}
+          />
+        </nav>
 
         <Button
           as="a"
-          href={homeContent.applyNow.href}
+          href={tamilHref}
+          size="sm"
+          variant="success"
+          className="px-3 ms-3 rounded-4 d-none d-sm-block"
+          onClick={closeMobile}
+        >
+          Tamil
+        </Button>
+
+        <a
           className="btn-getstarted d-none d-sm-block"
-          variant="primary"
+          href={homeContent.applyNow.href}
+          onClick={closeMobile}
         >
           {homeContent.applyNow.label}
-        </Button>
+        </a>
       </Container>
-    </Navbar>
+    </header>
   );
 }
