@@ -48,29 +48,38 @@ export const homeContent = {
     secondaryCta: { label: 'Virtual Tour', href: '#!' },
   },
   about: {
+    imageSrc: 'assets/img/about-img.png',
+    imageAlt: 'Campus',
+
+    tagLabel: 'About Us',
+    tagHref: '#!',
+
     heading: 'Preserving Tamil Heritage Through Quality Education',
     description:
-      'At Tamil Heritage School, we are committed to nurturing the\n                  next generation of global citizens who are deeply rooted in\n                  Tamil culture and language. Our unique approach blends\n                  traditional values with modern educational practices, ensuring\n                  our students excel academically while maintaining a strong\n                  cultural identity.',
+      'At Tamil Heritage School, we are committed to nurturing the next generation of global citizens who are deeply rooted in Tamil culture and language. Our unique approach blends traditional values with modern educational practices, ensuring our students excel academically while maintaining a strong cultural identity.',
+
     features: [
       {
-        iconBgStyle: 'width: 84px; height: 84px; background: #f7ebc7',
-        svg: '<svg fill="none" height="34" stroke="#691c17" stroke-width="2" viewbox="0 0 24 24" width="34">\n<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>\n</svg>',
         title: 'Cultural Excellence',
         desc: 'Deep immersion in Tamil language, arts, and traditions',
+        iconBg: '#f7ebc7',
+        svg: `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#691c17" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>`,
       },
       {
-        iconBgStyle: 'width: 84px; height: 84px; background: #dfeee6',
-        svg: '<svg aria-hidden="true" fill="none" height="34" stroke="#2f7d5c" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="34">\n<path d="M12 6c-2.3-1.4-4.7-2-7-2v14c2.3 0 4.7.6 7 2"></path>\n<path d="M12 6c2.3-1.4 4.7-2 7-2v14c-2.3 0-4.7.6-7 2"></path>\n<path d="M12 6v14"></path>\n</svg>',
         title: 'Academic Rigor',
         desc: 'Comprehensive curriculum aligned with modern standards',
+        iconBg: '#dfeee6',
+        svg: `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2f7d5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2.3-1.4-4.7-2-7-2v14c2.3 0 4.7.6 7 2"/><path d="M12 6c2.3-1.4 4.7-2 7-2v14c-2.3 0-4.7.6-7 2"/><path d="M12 6v14"/></svg>`,
       },
       {
-        iconBgStyle: 'width: 84px; height: 84px; background: #ead9d7',
-        svg: '<svg aria-hidden="true" fill="none" height="34" stroke="#6b2a2a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="34">\n<path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3"></path>\n<path d="M20 20v-2c0-2.2-1.8-4-4-4h-1"></path>\n<path d="M8 11c2.2 0 4-1.8 4-4S10.2 3 8 3 4 4.8 4 7s1.8 4 4 4z"></path>\n<path d="M14 20v-2c0-2.8-2.2-5-5-5H7c-2.8 0-5 2.2-5 5v2"></path>\n</svg>',
         title: 'Community Focus',
         desc: 'Building strong bonds within the Tamil community',
+        iconBg: '#ead9d7',
+        svg: `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#6b2a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3"/><path d="M20 20v-2c0-2.2-1.8-4-4-4h-1"/><path d="M8 11c2.2 0 4-1.8 4-4S10.2 3 8 3 4 4.8 4 7s1.8 4 4 4z"/><path d="M14 20v-2c0-2.8-2.2-5-5-5H7c-2.8 0-5 2.2-5 5v2"/></svg>`,
       },
     ],
+
+    cta: { label: 'Learn More About Us', href: '#!' },
   },
   academics: {
     heading: 'Our Educational Programs',

@@ -69,7 +69,6 @@ export default function SiteHeader() {
   const activeId = useScrollSpy(sectionIds);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Matches your static template behavior (main.js)
   useEffect(() => {
     document.body.classList.toggle('mobile-nav-active', mobileOpen);
     return () => document.body.classList.remove('mobile-nav-active');

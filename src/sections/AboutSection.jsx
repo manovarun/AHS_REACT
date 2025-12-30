@@ -1,23 +1,8 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { homeContent } from '../content/homeContent.js';
 
 function InlineSvg({ svg }) {
   return <span dangerouslySetInnerHTML={{ __html: svg }} />;
-}
-
-function parseInlineStyle(styleStr) {
-  const out = {};
-  (styleStr || '')
-    .split(';')
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .forEach((pair) => {
-      const [k, v] = pair.split(':').map((x) => x.trim());
-      if (!k || !v) return;
-      const key = k.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-      out[key] = v;
-    });
-  return out;
 }
 
 export default function AboutSection() {
@@ -25,43 +10,75 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="about section">
-      <Container data-aos="fade-up" data-aos-delay="50">
+      <div className="container" data-aos="fade-up" data-aos-delay="100">
         <Row className="align-items-center">
-          <Col lg={6} className="order-1 order-lg-1">
-            <div className="th-about-artwork" />
+          <Col
+            lg={6}
+            className="order-1 order-lg-1"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
+            <img
+              src={`/${about.imageSrc}`}
+              className="photo-frame__img img-fluid"
+              alt={about.imageAlt || 'Campus'}
+            />
           </Col>
 
-          <Col lg={6} className="order-2 order-lg-2">
+          <Col
+            lg={6}
+            className="order-2 order-lg-2"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
             <div className="content ps-3">
-              <h2 className="mb-3">{about.heading}</h2>
-              <p className="mb-4">{about.description}</p>
+              <a
+                href={about.tagHref || '#!'}
+                className="btn btn-landing rounded-5"
+              >
+                {about.tagLabel || 'About Us'}
+              </a>
 
-              {about.features.map((f, idx) => (
-                <Card
-                  key={f.title}
-                  className="border-0 bg-transparent"
-                  data-aos="zoom-in"
-                  data-aos-delay={150 + idx * 50}
-                >
+              <h3 className="section-heading mb-4 text-primary fw-medium">
+                {about.heading}
+              </h3>
+
+              <p className="lead-text mb-3">{about.description}</p>
+
+              {about.features.map((f) => (
+                <Card key={f.title} className="border-0 bg-transparent">
                   <Card.Body className="d-flex align-items-center gap-4 py-3 ps-0">
                     <div
                       className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-                      style={parseInlineStyle(f.iconBgStyle)}
+                      style={{
+                        width: '84px',
+                        height: '84px',
+                        background: f.iconBg,
+                      }}
                     >
                       <InlineSvg svg={f.svg} />
                     </div>
 
                     <div>
-                      <h3 className="h5 mb-1">{f.title}</h3>
-                      <span className="text-muted">{f.desc}</span>
+                      <h3 className="section-heading mb-3 text-primary fw-medium">
+                        {f.title}
+                      </h3>
+                      <p className="lead-text mb-2">{f.desc}</p>
                     </div>
                   </Card.Body>
                 </Card>
               ))}
+
+              <a
+                href={about.cta?.href || '#!'}
+                className="btn btn-primary px-5 py-3 mt-3 rounded-pill fs-5"
+              >
+                {about.cta?.label || 'Learn More About Us'}
+              </a>
             </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     </section>
   );
 }
