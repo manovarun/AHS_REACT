@@ -10,7 +10,6 @@ export default function SiteFooter() {
     <footer className="th-footer">
       <Container className="py-5">
         <Row className="g-5 align-items-start">
-          {/* Brand column */}
           <Col xs={12} lg={5}>
             <div className="d-flex align-items-start gap-3">
               <div className="th-footer-logo" aria-hidden="true">
@@ -53,7 +52,6 @@ export default function SiteFooter() {
             </div>
           </Col>
 
-          {/* Quick Links */}
           <Col xs={12} lg={3}>
             <h5 className="th-footer-title">
               {footer.quickLinksTitle || 'Quick Links'}
@@ -67,7 +65,6 @@ export default function SiteFooter() {
             </ul>
           </Col>
 
-          {/* Resources */}
           <Col xs={12} lg={4}>
             <h5 className="th-footer-title">
               {footer.resourcesTitle || 'Resources'}
@@ -82,7 +79,6 @@ export default function SiteFooter() {
           </Col>
         </Row>
 
-        {/* Divider with dots (static) */}
         <div className="th-footer-divider mt-5">
           <span className="th-footer-dots" aria-hidden="true">
             <span className="dot dot-yellow" />
@@ -91,7 +87,6 @@ export default function SiteFooter() {
           </span>
         </div>
 
-        {/* Bottom */}
         <div className="text-center th-footer-bottom mt-4">
           <div className="th-footer-copy">
             © {year} {footer.brand || 'Tamil Heritage School'}.{' '}
