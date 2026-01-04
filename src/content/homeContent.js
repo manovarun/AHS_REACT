@@ -191,51 +191,53 @@ export const homeContent = {
     cta: { label: 'Explore All Activities', href: '#!' },
   },
   gallery: {
-    heading: 'School Life Gallery',
+    pillLabel: 'Gallery',
+    heading: 'Moments of Learning & Culture',
     description:
-      'A glimpse into daily life at Tamil Heritage School - where tradition\n            meets education.',
+      'A glimpse into daily life at Tamil Heritage School - where tradition meets education.',
     items: [
       {
         href: 'assets/img/g1.jpg',
-        thumb: 'assets/img/g1.jpg',
         caption: 'Caption 1',
+        alt: 'Gallery image 1',
       },
       {
         href: 'assets/img/g2.jpg',
-        thumb: 'assets/img/g2.jpg',
         caption: 'Caption 2',
+        alt: 'Gallery image 2',
       },
       {
         href: 'assets/img/g3.jpg',
-        thumb: 'assets/img/g3.jpg',
         caption: 'Caption 3',
+        alt: 'Gallery image 3',
       },
       {
         href: 'assets/img/g4.jpg',
-        thumb: 'assets/img/g4.jpg',
         caption: 'Caption 4',
+        alt: 'Gallery image 4',
       },
       {
         href: 'assets/img/g5.jpg',
-        thumb: 'assets/img/g5.jpg',
         caption: 'Caption 5',
+        alt: 'Gallery image 5',
       },
       {
         href: 'assets/img/g6.jpg',
-        thumb: 'assets/img/g6.jpg',
         caption: 'Caption 6',
+        alt: 'Gallery image 6',
       },
       {
         href: 'assets/img/g7.jpg',
-        thumb: 'assets/img/g7.jpg',
         caption: 'Caption 7',
+        alt: 'Gallery image 7',
       },
       {
         href: 'assets/img/g8.jpg',
-        thumb: 'assets/img/g8.jpg',
         caption: 'Caption 8',
+        alt: 'Gallery image 8',
       },
     ],
+    cta: { label: 'View Full Gallery', href: '#!' },
   },
   calendar: {
     heading: 'School Calendar',
@@ -270,28 +272,38 @@ export const homeContent = {
     ],
   },
   testimonials: {
-    heading: 'What Our Community Says',
+    pillLabel: 'Testimonials',
+    heading: 'Voices from Our Community',
+    description:
+      'Hear from parents, students, and alumni about their experiences at Tamil Heritage School.',
+    bgImageSrc: 'assets/img/testimonials-bg.jpg',
     items: [
       {
         quote:
-          '“This school has given my daughter a deep connection to our\n                  Tamil roots while preparing her excellently for the future.\n                  The teachers are passionate and caring.”',
+          'This school has given my daughter a deep connection to our Tamil roots while preparing her excellently for the future. The teachers are passionate and caring.',
         name: 'Priya Sundar',
         role: 'Parent',
         avatar: 'assets/img/user1.png',
+        avatarAlt: '',
+        avatarFlip: false, // card1 static has no flip-up on img
       },
       {
         quote:
-          '“Learning Bharatanatyam and Tamil literature here has made me\n                  proud of my heritage. The cultural activities are amazing and\n                  the education is top-notch.”',
+          'Learning Bharatanatyam and Tamil literature here has made me proud of my heritage. The cultural activities are amazing and the education is top-notch.',
         name: 'Rajesh Kumar',
         role: 'Student',
         avatar: 'assets/img/user1.png',
+        avatarAlt: '',
+        avatarFlip: true, // card2 static has flip-up on img
       },
       {
         quote:
-          '“The foundation I received here helped me succeed in\n                  university and stay connected to Tamil culture. Forever\n                  grateful to this wonderful institution.”',
+          'The foundation I received here helped me succeed in university and stay connected to Tamil culture. Forever grateful to this wonderful institution.',
         name: 'Lakshmi Venkat',
         role: 'Alumni',
         avatar: 'assets/img/user1.png',
+        avatarAlt: '',
+        avatarFlip: true, // card3 static has flip-up on img
       },
     ],
   },

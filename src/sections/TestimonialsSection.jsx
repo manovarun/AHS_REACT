@@ -1,41 +1,100 @@
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { homeContent } from '../content/homeContent.js';
+
+const QUOTE_SVG = `
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M16 3C15.4696 3 14.9609 3.21071 14.5858 3.58579C14.2107 3.96086 14 4.46957 14 5V11C14 11.5304 14.2107 12.0391 14.5858 12.4142C14.9609 12.7893 15.4696 13 16 13C16.2652 13 16.5196 13.1054 16.7071 13.2929C16.8946 13.4804 17 13.7348 17 14V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17C14.7348 17 14.4804 17.1054 14.2929 17.2929C14.1054 17.4804 14 17.7348 14 18V20C14 20.2652 14.1054 20.5196 14.2929 20.7071C14.4804 20.8946 14.7348 21 15 21C16.5913 21 18.1174 20.3679 19.2426 19.2426C20.3679 18.1174 21 16.5913 21 15V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H16Z"
+    stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path
+    d="M5 3C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V11C3 11.5304 3.21071 12.0391 3.58579 12.4142C3.96086 12.7893 4.46957 13 5 13C5.26522 13 5.51957 13.1054 5.70711 13.2929C5.89464 13.4804 6 13.7348 6 14V15C6 15.5304 5.78929 16.0391 5.41421 16.4142C5.03914 16.7893 4.53043 17 4 17C3.73478 17 3.48043 17.1054 3.29289 17.2929C3.10536 17.4804 3 17.7348 3 18V20C3 20.2652 3.10536 20.5196 3.29289 20.7071C3.48043 20.8946 3.73478 21 4 21C5.5913 21 7.11742 20.3679 8.24264 19.2426C9.36786 18.1174 10 16.5913 10 15V5C10 4.46957 9.78929 3.96086 9.41421 3.58579C9.03914 3.21071 8.53043 3 8 3H5Z"
+    stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+
+function InlineSvg({ svg }) {
+  return <span dangerouslySetInnerHTML={{ __html: svg }} />;
+}
 
 export default function TestimonialsSection() {
   const { testimonials } = homeContent;
 
+  const cardDelay = (idx) => 200 + idx * 50;
+
   return (
-    <section id="testimonials" className="testimonials th-testimonials position-relative text-white">
-      <div className="th-testimonials-bg" aria-hidden="true" />
-      <Container className="th-testimonials-content position-relative">
-        <div className="th-testimonials-head text-center">
-          <h3 className="fw-semibold">{testimonials.heading}</h3>
-          <p className="fs-5 mb-0">Real experiences from parents, students, and alumni</p>
+    <section
+      id="testimonials"
+      className="testimonials th-testimonials position-relative text-white"
+    >
+      <div
+        className="th-testimonials-bg"
+        style={{ backgroundImage: `url('/${testimonials.bgImageSrc}')` }}
+        aria-hidden="true"
+      />
+
+      <Container className="position-relative th-testimonials-content">
+        <div
+          className="text-center mx-auto th-testimonials-head"
+          data-aos="fade-up"
+        >
+          <Button
+            type="button"
+            variant="light"
+            className="btn btn-light rounded-pill px-5 py-2 shadow-sm btn-pill-soft fs-5 mb-3 th-pill"
+          >
+            {testimonials.pillLabel || 'Testimonials'}
+          </Button>
+
+          <h3 className="text-white my-3 fw-semibold">
+            {testimonials.heading}
+          </h3>
+          <p>{testimonials.description}</p>
         </div>
 
         <Row className="g-4 mt-4 mt-lg-5 align-items-stretch">
           {testimonials.items.map((t, idx) => (
-            <Col key={t.name} md={6} lg={4}>
-              <Card className="th-card h-100" data-aos="fade-up" data-aos-delay={150 + idx * 50}>
-                <Card.Body>
-                  <div className="th-quote-badge">
-                    <span className="th-quote-mark">“</span>
-                    <span className="th-pill">Testimonial</span>
+            <Col key={`${t.name}-${idx}`} xs={12} md={6} lg={4}>
+              <div
+                className="th-card h-100"
+                data-aos="fade-up"
+                data-aos-delay={cardDelay(idx)}
+              >
+                <div
+                  className="th-quote-badge"
+                  aria-hidden="true"
+                  data-aos="flip-left"
+                  data-aos-delay="400"
+                >
+                  <span className="th-quote-mark">
+                    <InlineSvg svg={QUOTE_SVG} />
+                  </span>
+                </div>
+
+                <p className="th-quote">“{t.quote}”</p>
+
+                <div className="th-divider" />
+
+                <div
+                  className="th-profile pb-3"
+                  data-aos="zoom-in-down"
+                  data-aos-delay="400"
+                >
+                  <img
+                    className="th-avatar"
+                    src={`/${t.avatar}`}
+                    alt={t.avatarAlt || ''}
+                    loading="lazy"
+                    {...(t.avatarFlip
+                      ? { 'data-aos': 'flip-up', 'data-aos-delay': '400' }
+                      : {})}
+                  />
+                  <div className="th-profile-meta">
+                    <div className="th-name">{t.name}</div>
+                    <div className="th-role">{t.role}</div>
                   </div>
-
-                  <div className="th-quote mt-3">{t.quote}</div>
-
-                  <div className="th-divider my-3" />
-
-                  <div className="th-profile d-flex align-items-center gap-3">
-                    <img className="th-avatar" src={`/${t.avatar}`} alt={t.name} loading="lazy" />
-                    <div className="th-profile-meta">
-                      <div className="th-name">{t.name}</div>
-                      <div className="th-role">{t.role}</div>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
+                </div>
+              </div>
             </Col>
           ))}
         </Row>
