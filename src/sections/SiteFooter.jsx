@@ -4,45 +4,107 @@ import { homeContent } from '../content/homeContent.js';
 export default function SiteFooter() {
   const { footer } = homeContent;
 
+  const year = footer.year ?? new Date().getFullYear();
+
   return (
     <footer className="th-footer">
       <Container className="py-5">
-        <Row className="g-4">
-          <Col lg={4}>
-            <h3 className="th-footer-brand fw-semibold">{footer.brand}</h3>
-            {footer.tagline ? <p className="th-footer-tagline mb-0">{footer.tagline}</p> : null}
+        <Row className="g-5 align-items-start">
+          {/* Brand column */}
+          <Col xs={12} lg={5}>
+            <div className="d-flex align-items-start gap-3">
+              <div className="th-footer-logo" aria-hidden="true">
+                <i className={footer.logoIconClass || 'bi bi-bell'} />
+              </div>
 
-            <div className="th-social mt-3">
-              <a href="#" aria-label="Facebook"><i className="bi bi-facebook" /></a>
-              <a href="#" aria-label="Instagram"><i className="bi bi-instagram" /></a>
-              <a href="#" aria-label="Twitter"><i className="bi bi-twitter-x" /></a>
-              <a href="#" aria-label="YouTube"><i className="bi bi-youtube" /></a>
+              <div>
+                <h3 className="th-footer-brand fw-semibold">
+                  {footer.brand || 'Tamil Heritage School'}
+                </h3>
+                <div className="th-footer-brand-ta">
+                  {footer.brandTamil || 'தமிழ் பாரம்பரிய பள்ளி'}
+                </div>
+              </div>
+            </div>
+
+            <p className="th-footer-desc mt-4 mb-4">
+              {footer.description ||
+                'Dedicated to preserving Tamil culture and language while providing world-class education for future generations.'}
+            </p>
+
+            <p className="th-footer-desc-ta mb-4">
+              {footer.descriptionTamil ||
+                'தமிழ் கலாச்சாரம் மற்றும் மொழியை பாதுகாப்பதில் அர்ப்பணிப்புடன்.'}
+            </p>
+
+            <div className="th-footer-social">
+              {(footer.socials || []).map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href || '#'}
+                  className="th-social-btn"
+                  aria-label={s.label}
+                  target={s.openInNewTab ? '_blank' : undefined}
+                  rel={s.openInNewTab ? 'noreferrer' : undefined}
+                >
+                  <i className={s.iconClass} />
+                </a>
+              ))}
             </div>
           </Col>
 
-          <Col md={6} lg={4}>
-            <h4 className="th-footer-title">Quick Links</h4>
+          {/* Quick Links */}
+          <Col xs={12} lg={3}>
+            <h5 className="th-footer-title">
+              {footer.quickLinksTitle || 'Quick Links'}
+            </h5>
             <ul className="th-footer-links">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Admissions</a></li>
-              <li><a href="#academics">Academics</a></li>
-              <li><a href="#cultural-activities">Activities</a></li>
+              {(footer.quickLinks || []).map((l) => (
+                <li key={l.label}>
+                  <a href={l.href || '#'}>{l.label}</a>
+                </li>
+              ))}
             </ul>
           </Col>
 
-          <Col md={6} lg={4}>
-            <h4 className="th-footer-title">Resources</h4>
+          {/* Resources */}
+          <Col xs={12} lg={4}>
+            <h5 className="th-footer-title">
+              {footer.resourcesTitle || 'Resources'}
+            </h5>
             <ul className="th-footer-links">
-              <li><a href="#">Student Portal</a></li>
-              <li><a href="#">Parent Resources</a></li>
-              <li><a href="#">Calendar</a></li>
-              <li><a href="#">News &amp; Events</a></li>
+              {(footer.resources || []).map((l) => (
+                <li key={l.label}>
+                  <a href={l.href || '#'}>{l.label}</a>
+                </li>
+              ))}
             </ul>
           </Col>
         </Row>
 
-        <div className="th-footer-bottom text-center mt-4 pt-4">
-          <div className="th-footer-copy">{footer.copyright || 'All rights reserved.'}</div>
+        {/* Divider with dots (static) */}
+        <div className="th-footer-divider mt-5">
+          <span className="th-footer-dots" aria-hidden="true">
+            <span className="dot dot-yellow" />
+            <span className="dot dot-green" />
+            <span className="dot dot-yellow" />
+          </span>
+        </div>
+
+        {/* Bottom */}
+        <div className="text-center th-footer-bottom mt-4">
+          <div className="th-footer-copy">
+            © {year} {footer.brand || 'Tamil Heritage School'}.{' '}
+            {footer.copyrightText || 'All rights reserved.'}
+          </div>
+
+          <a
+            className="th-footer-bottom-link"
+            href={footer.bottomTamilLink?.href || '#'}
+          >
+            {footer.bottomTamilLink?.label ||
+              'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை'}
+          </a>
         </div>
       </Container>
     </footer>

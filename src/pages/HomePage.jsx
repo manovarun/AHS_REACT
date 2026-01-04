@@ -17,8 +17,8 @@ export default function HomePage() {
       <ActivitiesSection />
       <GallerySection />
       <TestimonialsSection />
-      <CalendarSection />
       <ContactSection />
+      <CalendarSection />
       <SiteFooter />
     </>
   );

@@ -11,32 +11,53 @@ export default function ContactSection() {
 
   return (
     <section id="contact-us" className="th-contact py-5">
-      <Container className="section-title text-center" data-aos="fade-up">
-        <div className="text-secondary fw-medium">Contact Us</div>
-        <h3 className="mt-2">{contact.heading}</h3>
-        <p className="mb-0">{contact.description}</p>
-      </Container>
+      <Container className="py-3 py-lg-4">
+        <div className="container section-title" data-aos="fade-up">
+          <Button
+            type="button"
+            variant="light"
+            className="btn btn-light rounded-pill px-5 py-2 shadow-sm btn-pill-soft fs-5 mb-3"
+            style={{
+              background: '#fff9f2',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              color: '#7b2b2b',
+            }}
+          >
+            {contact.pillLabel || 'Contact Us'}
+          </Button>
 
-      <Container className="mt-4 mt-lg-5">
-        <Row className="g-4 g-lg-5 align-items-start">
+          <h3 className="text-primary my-3 fw-semibold">{contact.heading}</h3>
+          <p>{contact.description}</p>
+        </div>
+
+        <Row className="g-5 mt-2 mt-lg-2 align-items-start">
           <Col xs={12} lg={5}>
+            <h4 className="th-col-title mb-4 fw-medium">
+              {contact.leftTitle || 'Visit Us'}
+            </h4>
+
             <div className="th-info-list">
               {contact.infoItems.map((it) => (
-                <div className="th-info-item" key={it.label} data-aos="fade-up" data-aos-delay="100">
-                  <div className={`th-icon th-icon-${it.label.toLowerCase()}`}>
+                <div className="th-info-item" key={it.key || it.label}>
+                  <div className={`th-icon ${it.iconClass}`}>
                     <i className={it.icon} />
                   </div>
+
                   <div className="th-info-text">
                     <div className="th-info-label">{it.label}</div>
+                    {it.labelTamil ? (
+                      <div className="th-info-label text-success">
+                        {it.labelTamil}
+                      </div>
+                    ) : null}
                     <div className="th-info-value">{it.value}</div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="th-map-placeholder mt-4" data-aos="fade-up" data-aos-delay="150">
+            <div className="th-map-placeholder mt-4" aria-hidden="true">
               <iframe
-                title="School Location"
                 src={contact.mapSrc}
                 width="100%"
                 height="100%"
@@ -44,38 +65,70 @@ export default function ContactSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title="School Location"
               />
             </div>
           </Col>
 
           <Col xs={12} lg={7}>
-            <div className="th-form-wrap" data-aos="fade-up" data-aos-delay="200">
-              <Form onSubmit={onSubmit}>
-                <Row className="g-3">
-                  <Col md={6}>
-                    <Form.Label className="th-label">Your Name</Form.Label>
-                    <Form.Control className="th-input" name="name" required />
-                  </Col>
-                  <Col md={6}>
-                    <Form.Label className="th-label">Your Email</Form.Label>
-                    <Form.Control className="th-input" type="email" name="email" required />
-                  </Col>
-                  <Col xs={12}>
-                    <Form.Label className="th-label">Subject</Form.Label>
-                    <Form.Control className="th-input" name="subject" required />
-                  </Col>
-                  <Col xs={12}>
-                    <Form.Label className="th-label">Message</Form.Label>
-                    <Form.Control as="textarea" className="th-textarea" rows={6} name="message" required />
-                  </Col>
-                  <Col xs={12}>
-                    <Button type="submit" className="btn-pill-soft px-5 py-2 rounded-pill" variant="light">
-                      <span className="text-primary fw-semibold">Send Message</span>
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            </div>
+            <h4 className="th-col-title mb-4 fw-medium">
+              {contact.rightTitle || 'Send us a Message'}
+            </h4>
+
+            <Form className="th-form" noValidate onSubmit={onSubmit}>
+              <div className="mb-4">
+                <Form.Label className="form-label th-label" htmlFor="thName">
+                  {contact.form?.nameLabel || 'Name / பெயர்'}
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  className="form-control th-input"
+                  id="thName"
+                  name="name"
+                  placeholder={contact.form?.namePlaceholder || 'Your name'}
+                  autoComplete="name"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <Form.Label className="form-label th-label" htmlFor="thEmail">
+                  {contact.form?.emailLabel || 'Email / மின்னஞ்சல்'}
+                </Form.Label>
+                <Form.Control
+                  type="email"
+                  className="form-control th-input"
+                  id="thEmail"
+                  name="email"
+                  placeholder={
+                    contact.form?.emailPlaceholder || 'your@email.com'
+                  }
+                  autoComplete="email"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <Form.Label className="form-label th-label" htmlFor="thMessage">
+                  {contact.form?.messageLabel || 'Message / செய்தி'}
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  className="form-control th-input th-textarea"
+                  id="thMessage"
+                  name="message"
+                  placeholder={
+                    contact.form?.messagePlaceholder || 'Your message...'
+                  }
+                  rows={6}
+                  required
+                />
+              </div>
+
+              <Button type="submit" className="btn th-btn w-100">
+                {contact.form?.submitLabel || 'Send Message / செய்தி அனுப்பு'}
+              </Button>
+            </Form>
           </Col>
         </Row>
       </Container>

@@ -308,37 +308,93 @@ export const homeContent = {
     ],
   },
   contact: {
-    heading: 'Contact Us',
+    pillLabel: 'Contact Us',
+    heading: 'Get In Touch',
     description:
-      "Have questions about admissions or our programs? We'd love to hear\n              from you.",
+      "Have questions about admissions or our programs? We'd love to hear from you.",
+    leftTitle: 'Visit Us',
+    rightTitle: 'Send us a Message',
+    mapSrc:
+      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus',
+
     infoItems: [
       {
+        key: 'address',
+        iconClass: 'th-icon-address',
         icon: 'bi bi-geo-alt',
         label: 'Address',
+        labelTamil: 'முகவரி',
         value: 'Tamil Nadu Cultural Center, Chennai 600001',
       },
       {
+        key: 'phone',
+        iconClass: 'th-icon-phone',
         icon: 'bi bi-telephone',
         label: 'Phone',
+        labelTamil: 'தொலைபேசி',
         value: '+91 44 1234 5678',
       },
       {
+        key: 'email',
+        iconClass: 'th-icon-email',
         icon: 'bi bi-envelope',
         label: 'Email',
+        labelTamil: 'மின்னஞ்சல்',
         value: 'info@tamilheritageschool.edu',
       },
       {
+        key: 'hours',
+        iconClass: 'th-icon-hours',
         icon: 'bi bi-clock',
         label: 'Hours',
+        labelTamil: 'நேரம்',
         value: 'Mon - Fri: 8:00 AM - 4:00 PM',
       },
     ],
-    mapSrc:
-      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus',
+
+    form: {
+      nameLabel: 'Name / பெயர்',
+      namePlaceholder: 'Your name',
+      emailLabel: 'Email / மின்னஞ்சல்',
+      emailPlaceholder: 'your@email.com',
+      messageLabel: 'Message / செய்தி',
+      messagePlaceholder: 'Your message...',
+      submitLabel: 'Send Message / செய்தி அனுப்பு',
+    },
   },
   footer: {
+    year: 2025,
+    logoIconClass: 'bi bi-bell',
     brand: 'Tamil Heritage School',
-    tagline: '',
-    copyright: '© 2025 Tamil Heritage School. All rights reserved.',
+    brandTamil: 'தமிழ் பாரம்பரிய பள்ளி',
+    description:
+      'Dedicated to preserving Tamil culture and language while providing world-class education for future generations.',
+    descriptionTamil:
+      'தமிழ் கலாச்சாரம் மற்றும் மொழியை பாதுகாப்பதில் அர்ப்பணிப்புடன்.',
+    socials: [
+      { label: 'Facebook', href: '#', iconClass: 'bi bi-facebook' },
+      { label: 'Instagram', href: '#', iconClass: 'bi bi-instagram' },
+      { label: 'YouTube', href: '#', iconClass: 'bi bi-youtube' },
+      { label: 'Twitter', href: '#', iconClass: 'bi bi-twitter-x' },
+    ],
+    quickLinksTitle: 'Quick Links',
+    quickLinks: [
+      { label: 'About Us', href: '#about' },
+      { label: 'Admissions', href: '#!' },
+      { label: 'Academics', href: '#academics' },
+      { label: 'Activities', href: '#cultural-activities' },
+    ],
+    resourcesTitle: 'Resources',
+    resources: [
+      { label: 'Student Portal', href: '#!' },
+      { label: 'Parent Resources', href: '#!' },
+      { label: 'Calendar', href: '#calendar' },
+      { label: 'News & Events', href: '#!' },
+    ],
+    bottomTamilLink: {
+      label: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை',
+      href: '#',
+    },
+    copyrightText: 'All rights reserved.',
   },
 };
